@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css?family=Caveat:regular,500,600,700&display=swap");
+ОБНУЛЕНИЕ СТИЛЕЙ
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+li {
+	list-style: none;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+img {
+	vertical-align: top;
+}
+html,
+body {
+	height: 100vh;
+}
+
+body {
+font-family: "Caveat";
+background-color: #E4E5E7;
+padding-top: 30px;
+display: flex;
+flex-direction: column;
+
+
+}
+/* ----------------------------- */
+.wrapper {
+}
+.todo {
+display: flex;
+}
+/* -----------------------body---------------------------- */
+.todo-body {
+	height: 300px;
+	width: 300px;
+	background-color: #fff;
+	
+}
+.todo-list {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	gap: 15px;
+}
+.todo-list__item {
+	display: flex;
+	justify-content: space-between;
+  
+}
+
+.todo-list__image {
+
+	
+}
+.todo-list__title {
+	font-size: 28px;
+	font-weight: 300;
+}
+.todo-list__item-title {
+	font-weight: 400;
+	display: flex;
+	
+	
+}
+.todo-list__item-buttons {
+	display: flex;
+	column-gap: 5px;
+	
+}
+.button-action {
+	background-color: #fff;
+padding: 0;
+border: none;
+	cursor: pointer;
+	
+	border-radius: 4px;
+	
+	
+	display: flex;
+	
+}
+.button-action:hover {
+border: 0.5px solid black;
+	opacity: 1;
+}
+
+/* --------------------create---------------------------- */
+.todo-create {
+	height: 270px;
+	width: 300px;
+	background-color: #fff;
+	border-left: 1px solid black;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+.todo-create__title {
+}
+.todo-create__body {
+}
+.todo-create__form{
+	
+}
+.todo-create__form-group {
+	margin-bottom: 10px;
+}
+.todo-create__input {
+}
+.todo-create__button {
+	 background-color: rgb(120, 120, 242);
+	border: 0.5px solid black ;
+	border-radius: 5px;
+	padding: 2px 10px;
+	color: #fff;
+	font-family: "Caveat"; 
+
+}
+.active {
+}
+.button-action img {
+	pointer-events: none;
+ }
+ .none {
+	display: none !important;
+ }
+ .done {
+	text-decoration: line-through;
+	color: #CDCDCD;
+ }
+ .process {
+
+color: rgb(113, 113, 226);
+ }
+ .expectation{
+	color: red;
+ }
