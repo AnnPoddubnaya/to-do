@@ -3,6 +3,8 @@ const form = document.querySelector('#todo-create__form');
 const input = document.querySelector('.todo-create__input');
 const todoList = document.querySelector('.todo-list');
 const emptyList = document.querySelector('.empty-list');
+let block = document.querySelector('.block');
+let line = document.querySelector('.todo-line');
 
 // добавление todo
 form.addEventListener('submit', addTodo);
@@ -22,6 +24,11 @@ todoList.addEventListener('click', processTodo);
 //редактирование todo
 todoList.addEventListener('click', editTodo);
 
+if(localStorage.getItem('todoList')){
+	emptyList.innerHTML = localStorage.getItem('todoList');
+}
+
+
 function addTodo(event){
 //отменяем отправку формы
 event.preventDefault();
@@ -29,8 +36,8 @@ event.preventDefault();
 const inputText = input.value;
 // создаем разметку нового todo
 const todoHTML = `
-<li class="todo-list__item ">
-<span class="todo-list__item-title">${inputText}</span>
+<li class="todo-list__item">
+<div class="todo-list__item-title">${inputText}</div>
 <div class="todo-list__item-buttons">
 <button class="button-action" type="button" data-action="done">
 <img  src="/assets/img/done.svg" alt="Done" width="15" height="15">
@@ -59,6 +66,7 @@ input.focus();
 if(todoList.children.length > 1){
 	emptyList.classList.add('none')
 }
+savetoLocalStorage();
 }
 function deleteTodo(event){
 
@@ -71,7 +79,7 @@ function deleteTodo(event){
 if(todoList.children.length === 1){
 	emptyList.classList.toggle('none');
 }
-
+savetoLocalStorage();
 }
 function doneTodo(event){
 	//проверям клик по кнопке "done" /отмечаем
@@ -80,6 +88,7 @@ if(event.target.dataset.action === 'done'){
 	li.querySelector('.todo-list__item-title');
 	li.classList.toggle('done');
 }
+savetoLocalStorage();
 }
 function processTodo(event){
 // проверяем клик по кнопке "process"/ожидание
@@ -88,6 +97,7 @@ if(event.target.dataset.action === 'process'){
 	li.querySelector('.todo-list__item-title');
 	li.classList.toggle('process');
 }
+savetoLocalStorage();
 }
 function expectationTodo(event){
 	// проверяем клик по кнопке "process"/ожидание
@@ -96,38 +106,54 @@ function expectationTodo(event){
 		li.querySelector('.todo-list__item-title');
 		li.classList.toggle('expectation');
 	}
+	savetoLocalStorage();
 }
 function editTodo(event){
 	
 	if(event.target.dataset.action === 'edit'){
 		const li = event.target.closest('.todo-list__item');
-		const span = li.firstElementChild;
+		const div = li.firstElementChild;
 		const input = document.createElement('input');
 		input.type = 'text';
-		input.value = span.textContent;
-		li.insertBefore(input, span);
-		li.removeChild(span);
+		input.value = div.textContent;
+		li.insertBefore(input, div);
+		li.removeChild(div);
+		input.focus();
 		event.target.dataset.action = 'save';
 		event.target.textContent = 'save';
 
 		}else if(event.target.dataset.action === 'save'){
 		const li = event.target.closest('.todo-list__item');
       const input = li.firstElementChild;
-		const span = document.createElement('span');
-		span.textContent = input.value;
-		li.insertBefore(span, input);
+		const div = document.createElement('div');
+		div.classList.add('todo-list__item-title');
+		div.textContent = input.value;
+		li.insertBefore(div, input);
 		li.removeChild(input);
-		
+
 		event.target.dataset.action = 'edit';
 		event.target.textContent = 'edit';
-		
-
-		
-
 		}
-		
-			};
-	
-	
-	
+		savetoLocalStorage();	
+}
+
+//изменение ширины блоков ползунком
+
+line.onmousedown = function dragMouseDown(event){
+let dragX = event.clientX;
+
+document.onmousemove = function onMouseMove(event){
+block.style.width = block.offsetWidth + event.clientX - dragX + 'px';
+
+dragX = event.clientX;
+}
+document.onmouseup = () => document.onmousemove = document.onmouseup = null;
+}
+
+//local storage - локальное хранилище в браузере
+
+function savetoLocalStorage(){
+	localStorage.setItem('todoList', todoList.innerHTML);
+};
+
 
