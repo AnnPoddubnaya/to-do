@@ -53,7 +53,6 @@ const todoHTML = `
 <img  src="/assets/img/expectation.svg" alt="expectation" width="15" height="15">
 </button>
 <button class="button-action" type="button" data-action="edit" > edit
-
 </button>
 </div>
 </li> `;
