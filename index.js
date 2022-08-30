@@ -40,17 +40,17 @@ const todoHTML = `
 <div class="todo-list__item-title">${inputText}</div>
 <div class="todo-list__item-buttons">
 <button class="button-action" type="button" data-action="done">
-<img  src="../assets/img/done.svg" alt="Done" width="15" height="15">
+<img  src="assets/img/done.svg" alt="Done" width="15" height="15">
 </button>
 <button class="button-action" type="button" data-action="delete" >
-<img src="../assets/img/delete.svg" alt="delete" width="15" height="15">
+<img src="assets/img/delete.svg" alt="delete" width="15" height="15">
 </button>
 	<button class="button-action" type="button" data-action="process" >
-	<img src="../assets/img/process.svg" alt="process" width="15" height="15">
+	<img src="assets/img/process.svg" alt="process" width="15" height="15">
 </button>
 </button>
 <button class="button-action" type="button" data-action="expectation" >
-<img  src="../assets/img/expectation.svg" alt="expectation" width="15" height="15">
+<img  src="assets/img/expectation.svg" alt="expectation" width="15" height="15">
 </button>
 <button class="button-action" type="button" data-action="edit" > edit
 </button>
